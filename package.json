@@ -2,16 +2,12 @@
   "name": "potoken-api",
   "version": "1.0.0",
   "type": "module",
-  "description": "PoToken generation API",
   "main": "server.mjs",
   "scripts": {
     "start": "node server.mjs"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "bgutils-js": "^4.0.2"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "youtube-po-token-generator": "^0.6.0"
+  }
 }
