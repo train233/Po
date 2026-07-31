@@ -1,6 +1,6 @@
-// server.mjs
+// server.mjs（ES Module版）
 import express from 'express';
-import { web } from 'bgutils-js';
+import { generate } from 'youtube-po-token-generator';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -9,9 +9,7 @@ app.use(express.json());
 
 app.get('/api/generate-pot', async (req, res) => {
     try {
-        const videoId = req.query.videoId || 'dQw4w9WgXcQ';
-        const result = await web.mintWebPoToken(videoId, { clientName: 'WEB' });
-
+        const result = await generate();
         res.json({
             success: true,
             poToken: result.poToken,
