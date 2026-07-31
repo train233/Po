@@ -1,17 +1,16 @@
-// server.js
-const express = require('express');
-const { web: { mintWebPoToken } } = require('bgutils-js');
+// server.mjs
+import express from 'express';
+import { web } from 'bgutils-js';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// PoTokenを生成するAPIエンドポイント
 app.get('/api/generate-pot', async (req, res) => {
     try {
         const videoId = req.query.videoId || 'dQw4w9WgXcQ';
-        const result = await mintWebPoToken(videoId, { clientName: 'WEB' });
+        const result = await web.mintWebPoToken(videoId, { clientName: 'WEB' });
 
         res.json({
             success: true,
@@ -28,7 +27,6 @@ app.get('/api/generate-pot', async (req, res) => {
     }
 });
 
-// ヘルスチェック用エンドポイント
 app.get('/health', (req, res) => {
     res.send('OK');
 });
